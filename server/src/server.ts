@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express'
+import cors from 'cors'
 import { language } from './models/language.interface'
 import { candidate } from './models/candidate.interface'
 
@@ -8,7 +9,12 @@ const port = process.env.PORT || 1234
 
 let candidates: candidate[] | null = null
 
-app.get('/candidates', (req: Request, res: Response) => {
+app.use(cors({
+	origin: process.env.CLIENT_URL || '*',
+	methods: ['GET'], 
+}))
+  
+app.get('/api/candidates', (req: Request, res: Response) => {
 	if (!candidates) {
 		res.status(500).json({ msg: 'error fetch data' })
 		return
@@ -29,7 +35,7 @@ app.listen(port, async () => {
 				const languages = cand.languages
 					.map((langCode: number) => data.Languages.find((lang: language) => langCode == lang.id)?.name)
 					.filter((lang: string) => !!lang)
-				return { ...cand, languages, lastUpdateDate: new Date(cand.lastUpdateDate) }
+				return { ...cand, languages, lastUpdateDate: new Date(cand.lastUpdateDate) } as candidate
 			}).sort((a: candidate, b: candidate) => b.lastUpdateDate.getTime() - a.lastUpdateDate.getTime())
 		}
 	} catch (error) {
