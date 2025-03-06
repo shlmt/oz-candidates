@@ -1,4 +1,8 @@
 <div class='view'>
+    <app-filters
+        (onSelectLanguage)="onSelectLanguage($event)"
+        (onSelectExperience)="onSelectExperience($event)">
+    </app-filters>
      <table>
         @for (candidate of filteredCandidates(); track $index) {
             <tr>

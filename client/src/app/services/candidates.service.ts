@@ -18,7 +18,7 @@ export class CandidatesService {
 
   public getCandidates = async () => {
     this.candidates.set(
-      await firstValueFrom(this.http.get<any[]>(this.apiUrl))
+      await firstValueFrom(this.http.get<any[]>(this.apiUrl)) as candidate[]
     )
   }
 }

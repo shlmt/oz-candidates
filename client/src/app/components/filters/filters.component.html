@@ -1,0 +1,15 @@
+<div class="filters-container">
+    <div class="langs">
+        <select (change)="handleLanguageSelected($event)">
+            <option [value]="''">None</option>
+            @for (lang of languagesService.languages(); track $index) {
+                <option [value]="lang">{{lang}}</option>
+            }
+        </select>
+    </div>
+    <div class="exp">
+        <button (click)="onSelectExperience.emit('junior')">junior</button>
+        <button (click)="onSelectExperience.emit('senior')">senior</button>
+        <button (click)="onSelectExperience.emit(null)">None</button>
+    </div>
+</div>

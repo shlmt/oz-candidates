@@ -5,5 +5,5 @@ export interface candidate {
     name:string,
     beginYear:number,
     lastUpdateDate:Date,
-    languages: language[]
+    languages: string[]
 }
