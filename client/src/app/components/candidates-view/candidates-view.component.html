@@ -1,0 +1,12 @@
+<div class='view'>
+     <table>
+        @for (candidate of filteredCandidates(); track $index) {
+            <tr>
+                <td>{{candidate.name}}</td>
+                <td>{{candidate.beginYear}}</td>
+                <td>{{candidate.languages}}</td>
+            </tr>
+        }
+     </table>
+</div>
+  
