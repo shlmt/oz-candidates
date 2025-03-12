@@ -5,7 +5,7 @@ import { CandidatesViewComponent } from './components/candidates-view/candidates
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrl: './app.component.css',
   imports: [CandidatesViewComponent]
 })
 export class AppComponent {

@@ -1,15 +1,60 @@
-<div class="filters-container">
-    <div class="langs">
-        <select (change)="handleLanguageSelected($event)">
-            <option [value]="''">None</option>
-            @for (lang of languagesService.languages(); track $index) {
-                <option [value]="lang">{{lang}}</option>
-            }
-        </select>
+<div class="flex flex-row gap-10">
+  <div class="exp">
+    <label class="block pb-2 text-sm font-medium text-gray-900">
+      Select Experience
+    </label>
+    <div
+      class="flex flex-col sm:flex-row rounded-lg border border-gray-100 bg-gray-100 p-1"
+    >
+      <button
+        (click)="handleExperienceSelected('junior')"
+        [class]="
+          'inline-block cursor-pointer rounded-md px-4 py-2 text-sm focus:relative ' +
+          (selectedValue === 'junior'
+            ? 'bg-white text-amber-400 shadow-xs'
+            : 'text-gray-500 hover:text-gray-700')
+        "
+      >
+        Junior
+      </button>
+      <button
+        (click)="handleExperienceSelected('senior')"
+        [class]="
+          'inline-block cursor-pointer rounded-md px-4 py-2 text-sm focus:relative ' +
+          (selectedValue === 'senior'
+            ? 'bg-white text-amber-400 shadow-xs'
+            : 'text-gray-500 hover:text-gray-700')
+        "
+      >
+        Senior
+      </button>
+      <button
+        (click)="handleExperienceSelected(null)"
+        [class]="
+          'inline-block cursor-pointer rounded-md px-4 py-2 text-sm focus:relative ' +
+          (selectedValue === null
+            ? 'bg-white text-amber-400 shadow-xs'
+            : 'text-gray-500 hover:text-gray-700')
+        "
+      >
+        None
+      </button>
     </div>
-    <div class="exp">
-        <button (click)="onSelectExperience.emit('junior')">junior</button>
-        <button (click)="onSelectExperience.emit('senior')">senior</button>
-        <button (click)="onSelectExperience.emit(null)">None</button>
-    </div>
+  </div>
+
+  <div class="langs">
+    <label for="langs" class="block pb-2 text-sm font-medium text-gray-900">
+      Select Language
+    </label>
+    <select
+      id="langs"
+      (change)="handleLanguageSelected($event)"
+      class="focus:ring-opacity-50 mt-1.5 w-full cursor-pointer rounded-md border border-gray-300 bg-white px-4 py-2 text-sm text-gray-500 shadow-sm outline-none focus:border-amber-400 focus:ring focus:ring-amber-200 sm:text-sm"
+    >
+      <option [value]="">None</option>
+      @for (lang of languagesService.languages(); track $index) {
+        <option [value]="lang">{{ lang }}</option>
+      }
+    </select>
+  </div>
 </div>

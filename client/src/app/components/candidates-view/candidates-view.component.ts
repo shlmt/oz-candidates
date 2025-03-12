@@ -6,7 +6,7 @@ import { FiltersComponent } from '../filters/filters.component'
   selector: 'app-candidates-view',
   imports: [FiltersComponent],
   templateUrl: './candidates-view.component.html',
-  styleUrl: './candidates-view.component.scss',
+  styleUrl: './candidates-view.component.css',
 })
 export class CandidatesViewComponent {
   private currentYear = new Date().getFullYear()

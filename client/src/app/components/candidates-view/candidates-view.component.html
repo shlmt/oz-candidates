@@ -1,16 +1,48 @@
-<div class='view'>
-    <app-filters
-        (onSelectLanguage)="onSelectLanguage($event)"
-        (onSelectExperience)="onSelectExperience($event)">
-    </app-filters>
-     <table>
+<div class="flex-col p-5 md:justify-items-center">
+  <app-filters
+    (onSelectLanguage)="onSelectLanguage($event)"
+    (onSelectExperience)="onSelectExperience($event)"
+  >
+  </app-filters>
+  <div
+    class="s:w-9/10 mt-5 max-h-150 overflow-x-hidden overflow-y-scroll rounded-xl bg-white bg-clip-border text-gray-800 shadow-md md:w-8/10 lg:w-7/10"
+  >
+    <table class="w-full min-w-max table-fixed text-left">
+      <thead>
+        <tr
+          class="font-sans text-sm leading-none font-medium text-teal-500 antialiased"
+        >
+          <th class="border-b border-gray-400 p-4">Name</th>
+          <th class="border-b border-gray-400 p-4">Experience</th>
+          <th class="border-b border-gray-400 p-4">Languages</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-600">
         @for (candidate of filteredCandidates(); track $index) {
-            <tr>
-                <td>{{candidate.name}}</td>
-                <td>{{candidate.beginYear}}</td>
-                <td>{{candidate.languages}}</td>
-            </tr>
+          <tr class="border-t border-gray-300 hover:bg-slate-50">
+            <td
+              class="text-blue-gray-900 block p-4 font-sans text-sm leading-normal font-normal capitalize antialiased"
+            >
+              {{ candidate.name }}
+            </td>
+            <td class="p-4">
+              {{ candidate.beginYear }}
+            </td>
+            <td class="p-4">
+              {{ candidate.languages }}
+            </td>
+          </tr>
+        } @empty {
+          <tr class="h-12">
+            <td
+              colspan="3"
+              class="text-center text-gray-500"
+            >
+              not found
+            </td>
+          </tr>
         }
-     </table>
+      </tbody>
+    </table>
+  </div>
 </div>
-  
