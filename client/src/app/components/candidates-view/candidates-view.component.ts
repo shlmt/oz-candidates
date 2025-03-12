@@ -2,10 +2,11 @@ import { Component, computed, signal } from '@angular/core'
 import { CandidatesService } from '../../services/candidates.service'
 import { FiltersComponent } from '../filters/filters.component'
 import { ExpYearsPipe } from '../../pipes/exp-years.pipe'
+import { SeparatePipe } from '../../pipes/separate.pipe'
 
 @Component({
   selector: 'app-candidates-view',
-  imports: [FiltersComponent, ExpYearsPipe],
+  imports: [FiltersComponent, ExpYearsPipe, SeparatePipe],
   templateUrl: './candidates-view.component.html',
   styleUrl: './candidates-view.component.css',
 })

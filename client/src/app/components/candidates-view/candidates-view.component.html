@@ -29,7 +29,7 @@
               {{ candidate.beginYear | expYears }}
             </td>
             <td class="p-4">
-              {{ candidate.languages }}
+              {{ candidate.languages | separate }}
             </td>
           </tr>
         } @empty {
