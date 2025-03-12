@@ -14,7 +14,7 @@ export class CandidatesViewComponent {
 
   public filteredCandidates = computed(() => {
     return this.candidatesService.candidates().filter((cand) => {
-      const languageCheck = this.selectedLanguage() === '' || cand.languages.includes(this.selectedLanguage())
+      const languageCheck = this.selectedLanguage() === 'None' || cand.languages.includes(this.selectedLanguage())
       const experienceCheck =
         (!this.selectedExperience() || 
         (this.selectedExperience() === 'junior' && this.currentYear - (cand.beginYear || this.currentYear) < 3) || 
@@ -23,7 +23,7 @@ export class CandidatesViewComponent {
     })
   })
 
-  public selectedLanguage = signal<string>('')
+  public selectedLanguage = signal<string>('None')
   public selectedExperience = signal<'junior' | 'senior' | null>(null)
 
   constructor(private candidatesService: CandidatesService) {}
