@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http'
 import { inject, Injectable, signal } from '@angular/core'
 import { firstValueFrom } from 'rxjs'
+import { environment } from '../../environments/environment'
 
 @Injectable({
   providedIn: 'root',
 })
 export class LanguagesService {
-  private apiUrl = 'http://localhost:1234/api/languages'
+  private apiUrl = `${environment.apiUrl}/languages`
   private readonly http: HttpClient = inject(HttpClient)
 
   public languages = signal<string[]>([])
@@ -17,7 +18,7 @@ export class LanguagesService {
 
   private getLanguages = async () => {
     this.languages.set(
-      await firstValueFrom(this.http.get<any[]>(this.apiUrl)) as string[]
+      await firstValueFrom(this.http.get<string[]>(this.apiUrl)) as string[]
     )
   }
 }
