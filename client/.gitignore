@@ -42,6 +42,5 @@ testem.log
 Thumbs.db
 
 # prettier configure
-.postcssrc.json
 .prettierrc.json
 prettier.config.js
